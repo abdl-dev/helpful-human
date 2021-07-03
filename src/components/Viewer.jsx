@@ -3,9 +3,6 @@ import ReactPaginate from 'react-paginate'
 import Swatch from './Swatch'
 
 const Viewer = () => {
-	const [viewer, setViewer] = useState(null)
-
-	let random_hex = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
 	let elements = [];
 	let pageSize = 12;
 
@@ -14,26 +11,35 @@ const Viewer = () => {
 		elements.push(<Swatch key={ color } hex_code={ color }/>)
 	}
 
+	const [viewer, setViewer] = useState(elements.slice(0, pageSize));
+
 	let numPages = Math.ceil(elements.length / pageSize);
 
-	let currPageNum = 0;
-	let currPage = elements.slice(pageSize * currPageNum, pageSize * (currPageNum + 1));
+	const selectPage = ({selected}) => {
+		setViewer(elements.slice(pageSize * selected,
+								 pageSize * (selected + 1)));
+	}
 
 	return (
-		<>
 		<div className="col-9 viewer">
 			<div className="col-12 page">
-				{ currPage }>
+				{ viewer }
 			</div>
-			<div className="col-12 paginate">
-				<ReactPaginate>
+			<div className="col-12">
+				<ReactPaginate
 					previousLabel={ 'Previous' }
 					nextLabel={ 'Next' }
-					pageCount={ numPages }
-				</ReactPaginate>
+					pageCount={ 8 }
+					onPageChange={ selectPage }
+					containerClassName={ 'paginate' }
+					previousLinkClassName={ 'paginatePrevious' }
+					nextLinkClassName={ 'paginateNext' }
+					activeClassName={ 'paginateActive'}
+					disabledClassName={ 'paginateDisabled' }
+					pageRangeDisplayed='10'
+				/>
 			</div>
 		</div>
-		</>
 	)
 }
 

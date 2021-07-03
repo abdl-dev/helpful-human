@@ -5,22 +5,14 @@ import Label from './Label'
 
 const Swatch = ({ hex_code }) => {
 	const [swatch, setSwatch] = useState({
-		width: '225px',
-		height: '265px',
 		backgroundColor: hex_code
-
 	})
 
-	const [label, setLabel] = useState({
-		fontSize: '1.5rem',
-		lineHeight: '50px',
-		height: '50px',
-		marginTop: '214px'
-	})
+	const [label, setLabel] = useState(null)
 
 	const onClick = () => {
 		setSwatch({
-			width: '95%',
+			width: '100%',
 			height: '650px',
 			backgroundColor: swatch.backgroundColor
 		})
