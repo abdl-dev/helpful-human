@@ -10,7 +10,7 @@
 /build
 
 # misc
-.swp
+*.swp
 .env.local
 .env.development.local
 .env.test.local
