@@ -1,11 +1,14 @@
+import Swatch from './Swatch'
+
 const Viewer = () => {
 	return (
 		<div className="col-9 view">
-			<div>CONTENT1</div>
-			<div>CONTENT2</div>
-			<div>CONTENT3</div>
-			<div>CONTENT4</div>
-			<div>CONTENT5</div>
+			<Swatch hex_code="red" />
+			<Swatch hex_code="blue" />
+			<Swatch hex_code="green" />
+			<Swatch hex_code="yellow" />
+			<Swatch hex_code="orange" />
+			<Swatch hex_code="green" />
 		</div>
 	)
 }
