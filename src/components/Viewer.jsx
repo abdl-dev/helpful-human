@@ -1,21 +1,20 @@
+import { useState } from 'react'
 import Swatch from './Swatch'
 
 const Viewer = () => {
+	const [viewer, setViewer] = useState(null)
+	let elements = []
+
+	for (let i = 0; i < 120; i++) {
+		let color = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+		elements.push(<Swatch key={ color } hex_code={ color }/>)
+	}
+
+	let random_hex = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+
 	return (
 		<div className="col-9 viewer">
-			<Swatch hex_code="red" />
-			<Swatch hex_code="orange" />
-			<Swatch hex_code="yellow" />
-			<Swatch hex_code="green" />
-			<Swatch hex_code="blue" />
-			<Swatch hex_code="purple" />
-			<Swatch hex_code="brown" />
-			<Swatch hex_code="gray" />
-
-			<Swatch hex_code="red" />
-			<Swatch hex_code="orange" />
-			<Swatch hex_code="yellow" />
-			<Swatch hex_code="green" />
+			{ elements }
 		</div>
 	)
 }

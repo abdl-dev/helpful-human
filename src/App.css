@@ -89,7 +89,7 @@
 }
 
 .swatch {
-	max-width: 225px;
+	width: 225px;
 	height: 265px;
 	border: 1px solid #FFFFFF;
 	margin: 1rem auto;
@@ -105,8 +105,6 @@
 	width: 100%;
 	margin-top: 214px;
 	padding: 0rem 1.5rem;
-	text-align: left;
-	vertical-align: bottom;
 	background-color: white;
 	border-radius: 0px 0px 8px 8px;
 	overflow: hidden;
