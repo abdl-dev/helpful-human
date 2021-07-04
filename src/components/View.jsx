@@ -38,6 +38,7 @@ const View = () => {
 			pageRangeDisplayed={ numPages }
 		/>
 	)
+
 	return (
 		<div className="col-9 view">
 			<div className="col-12 page">
