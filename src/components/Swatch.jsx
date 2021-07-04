@@ -4,32 +4,45 @@ import Label from './Label'
 
 
 const Swatch = ({ swatchState, view, setView }) => {
-	const [swatch, setSwatch] = useState(swatchState);
-	const [label, setLabel] = useState(null)
+	const [label, setLabel] = useState({
+		hexCode: swatchState.backgroundColor
+	})
 
 	const onClick = (e) => {
-		console.log(e)
-		setSwatch({
+		let newView = []
+		newView.push({
+			backgroundColor: e.target.id,
 			width: '100%',
 			height: '650px',
-			backgroundColor: e.target.id,
 			borderColor: 'black'
 		})
+		view.forEach(swatch => newView.push({
+			backgroundColor: swatch.backgroundColor,
+			width: '176px',
+			height: '176px'
+		}))
+
+		setView(newView.slice(0,6))
 		setLabel({
-			fontSize: '4rem',
-			lineHeight: '150px',
-			height: '150px',
-			marginTop: '498px',
-			padding: '0rem 4.5rem'
+			lineHeight: '65px',
+			height: '65px',
+			marginTop: '110px',
+			padding: '0rem 1.0rem'
 		})
-		setView(view.filter(item => item.backgroundColor == e.target.id))
+		// setLabel({
+		// 	fontSize: '4rem',
+		// 	lineHeight: '150px',
+		// 	height: '150px',
+		// 	marginTop: '498px',
+		// 	padding: '0rem 4.5rem'
+		// })
 	}
 	return (
 		<div
 		key={ swatchState.backgroundColor }
 		id={ swatchState.backgroundColor }
 		className="swatch"
-		style={ swatch }
+		style={ swatchState }
 		onClick={ onClick }>
 			<Label labelState={ label } hexCode={ swatchState.backgroundColor }/>
 		</div>
