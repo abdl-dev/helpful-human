@@ -46,8 +46,24 @@
 	text-decoration: none;
 	display: inline-block;
 	cursor: pointer;
+}
+
+.clear_btn {
+	width: 260px;
+	color: #363c3c;
+	background-color: #FFFFFF;
+	font-size: 1.5rem;
+	font-weight: 700;
+	padding: 0.75rem 0rem 0.65rem 0rem;
+	margin: 1rem auto;
+	border: 1px solid #000000;
+	border-radius: 10px;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
 
 }
+
 .group_btn {
 	color: #363c3c;
 	background-color: transparent;
@@ -138,4 +154,8 @@
 
 .paginatePrevious, .paginateNext, .paginateDisabled {
 	display: none;
+}
+
+.navrow {
+	display: flex;
 }

@@ -22,6 +22,22 @@ const View = () => {
 		setSwatches(colors.slice(pageSize * selected,
 								 pageSize * (selected + 1)));
 	}
+
+
+	const [navRow, setNavRow] = useState(
+		<ReactPaginate
+			previousLabel={ 'Previous' }
+			nextLabel={ 'Next' }
+			pageCount={ numPages }
+			onPageChange={ selectPage }
+			containerClassName={ 'paginate' }
+			previousLinkClassName={ 'paginatePrevious' }
+			nextLinkClassName={ 'paginateNext' }
+			activeClassName={ 'paginateActive'}
+			disabledClassName={ 'paginateDisabled' }
+			pageRangeDisplayed={ numPages }
+		/>
+	)
 	return (
 		<div className="col-9 view">
 			<div className="col-12 page">
@@ -30,22 +46,13 @@ const View = () => {
 			 			  swatches={ swatches }
 					   setSwatches={ setSwatches }
 					   		labels={ labels }
-						 setLabels={ setLabels }/>
+						 setLabels={ setLabels }
+						 	navRow={ navRow }
+						 setNavRow={ setNavRow }/>
 				))}
 			</div>
-			<div className="col-12">
-				<ReactPaginate
-					previousLabel={ 'Previous' }
-					nextLabel={ 'Next' }
-					pageCount={ numPages }
-					onPageChange={ selectPage }
-					containerClassName={ 'paginate' }
-					previousLinkClassName={ 'paginatePrevious' }
-					nextLinkClassName={ 'paginateNext' }
-					activeClassName={ 'paginateActive'}
-					disabledClassName={ 'paginateDisabled' }
-					pageRangeDisplayed='10'
-				/>
+			<div className="col-12 navrow">
+				{ navRow }
 			</div>
 		</div>
 	)

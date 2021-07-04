@@ -3,10 +3,9 @@ import { useState } from 'react'
 import Label from './Label'
 
 
-const Swatch = ({ swatch, swatches, setSwatches, labels, setLabels}) => {
-	console.log(labels)
+const Swatch = ({ swatch, swatches, setSwatches, labels, setLabels, navRow, setNavRow}) => {
 
-	const onClick = (e) => {
+	const onClickDetail = (e) => {
 		let newSwatches = []
 		newSwatches.push({
 			backgroundColor: e.target.id,
@@ -33,6 +32,14 @@ const Swatch = ({ swatch, swatches, setSwatches, labels, setLabels}) => {
 				padding: '0rem 1.0rem'
 			}
 		})
+
+		const onClickClear = (e) => {
+			// to be implemented after bbq
+		}
+
+		setNavRow(
+			<input type="button" className="clear_btn" value="Clear" onClick={ onClickClear }/>
+		)
 		// setLabels({
 		// 	fontSize: '4rem',
 		// 	lineHeight: '150px',
@@ -47,7 +54,7 @@ const Swatch = ({ swatch, swatches, setSwatches, labels, setLabels}) => {
 		id={ swatch.backgroundColor }
 		className="swatch"
 		style={ swatch }
-		onClick={ onClick }>
+		onClick={ onClickDetail }>
 			<Label text={ swatch.backgroundColor } label={ labels }/>
 		</div>
 	)
