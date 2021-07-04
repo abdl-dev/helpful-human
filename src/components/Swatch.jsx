@@ -3,37 +3,35 @@ import { useState } from 'react'
 import Label from './Label'
 
 
-const Swatch = ({ hex_code }) => {
-	const [swatch, setSwatch] = useState({
-		backgroundColor: hex_code
-	})
-
+const Swatch = ({ swatchState, view, setView }) => {
+	const [swatch, setSwatch] = useState(swatchState);
 	const [label, setLabel] = useState(null)
 
-	const onClick = () => {
+	const onClick = (e) => {
+		console.log(e)
 		setSwatch({
 			width: '100%',
 			height: '650px',
-			backgroundColor: swatch.backgroundColor
+			backgroundColor: e.target.id,
+			borderColor: 'black'
 		})
 		setLabel({
 			fontSize: '4rem',
 			lineHeight: '150px',
 			height: '150px',
-			marginTop: '500px',
+			marginTop: '498px',
 			padding: '0rem 4.5rem'
 		})
-
+		setView(view.filter(item => item.backgroundColor == e.target.id))
 	}
-
 	return (
 		<div
-		key={ hex_code }
-		id={ hex_code }
+		key={ swatchState.backgroundColor }
+		id={ swatchState.backgroundColor }
 		className="swatch"
 		style={ swatch }
 		onClick={ onClick }>
-			<Label state={ label } hex_code={ hex_code }/>
+			<Label labelState={ label } hexCode={ swatchState.backgroundColor }/>
 		</div>
 	)
 }

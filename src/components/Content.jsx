@@ -1,11 +1,11 @@
 import Sidebar from './Sidebar'
-import Viewer  from './Viewer'
+import View  from './View'
 
 const Content = () => {
 	return (
 		<div className="row content">
 			<Sidebar/>
-			<Viewer/>
+			<View/>
 		</div>
 	)
 }
