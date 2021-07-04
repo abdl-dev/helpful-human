@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-const Label = ({ hexCode, labelState }) => {
+const Label = ({ text, label }) => {
 	return (
 		<label
-		key={ hexCode + 'label'}
-		htmlFor={ hexCode }
-		style={ labelState }>{ hexCode }</label>
+		key={ 'label' + text }
+		htmlFor={ text }
+		style={ label.style }>{ text }</label>
 	)
 }
 

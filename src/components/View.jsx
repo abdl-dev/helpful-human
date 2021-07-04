@@ -3,6 +3,9 @@ import ReactPaginate from 'react-paginate'
 import Swatch from './Swatch'
 
 const View = () => {
+	const [labels, setLabels] = useState({
+		id: 'placeholder'
+	})
 
 	let colors = [];
 
@@ -13,19 +16,21 @@ const View = () => {
 
 	let pageSize = 12;
 	let numPages = Math.ceil(colors.length / pageSize);
-	const [view, setView] = useState(colors.slice(0, pageSize));
+	const [swatches, setSwatches] = useState(colors.slice(0, pageSize));
 
 	const selectPage = ({selected}) => {
-		setView(colors.slice(pageSize * selected,
+		setSwatches(colors.slice(pageSize * selected,
 								 pageSize * (selected + 1)));
 	}
-
 	return (
 		<div className="col-9 view">
 			<div className="col-12 page">
-				{view.map((swatchState) => (
-					<Swatch swatchState={ swatchState } view={ view } setView={ setView }/>
-
+				{swatches.map((swatch) => (
+					<Swatch swatch={ swatch }
+			 			  swatches={ swatches }
+					   setSwatches={ setSwatches }
+					   		labels={ labels }
+						 setLabels={ setLabels }/>
 				))}
 			</div>
 			<div className="col-12">
