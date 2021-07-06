@@ -107,11 +107,16 @@ const Content = () => {
 
 		setSwatches(newSwatches)
 		setNavRow(paginate)
-		console.log(swatches)
 	}
 
 	const onClickRandom = (e) => {
-		// to be implemented
+		let x = Math.floor(Math.random() * pageSize)
+		let randomSwatch = {
+			target: {
+				id: swatches[x].backgroundColor
+			}
+		}
+		onClickDetail(randomSwatch)
 	}
 
 	const onClickGroup = (e) => {
