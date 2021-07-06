@@ -61,8 +61,10 @@ const Content = () => {
 			height: '650px',
 			borderColor: 'black'
 		})
-		swatches.forEach(swatch => newSwatches.push({
-			backgroundColor: swatch.backgroundColor,
+		let restSwatches = swatches.filter(item => item.backgroundColor !== e.target.id)
+
+		restSwatches.forEach(item => newSwatches.push({
+			backgroundColor: item.backgroundColor,
 			width: '176px',
 			height: '176px'
 		}))
@@ -70,6 +72,7 @@ const Content = () => {
 		setSwatches(newSwatches.slice(0,6))
 
 		let newLabels = []
+
 		let detailLabel = [{
 			text: e.target.id,
 			style: {
@@ -80,9 +83,11 @@ const Content = () => {
 				padding: '0rem 4.5rem'
 			}
 		}]
+
 		newLabels.push(detailLabel[0])
 
 		let restLabels = labels.filter(item => item.text !== e.target.id)
+
 		restLabels.forEach(label => newLabels.push({
 			text: label.text,
 			style: {
@@ -92,26 +97,16 @@ const Content = () => {
 				padding: '0rem 1.0rem'
 			}
 		}))
+
 		setLabels(newLabels)
-
-
 
 		setNavRow(
 			<Button key="btnClear"
 			  className="clear_btn"
 			  valueName="Clear"
 			    onClick={ onClickClear } />
-		)
 
-		// setLabels({
-		// 	style: {
-		// 		fontSize: '4rem',
-		// 		lineHeight: '150px',
-		// 		height: '150px',
-		// 		marginTop: '498px',
-		// 		padding: '0rem 4.5rem'
-		// 	}
-		// })
+		)
 	}
 
 
