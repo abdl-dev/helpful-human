@@ -1,6 +1,6 @@
 import Swatch from './Swatch'
 
-const View = ({ swatches, setSwatches, labels, setLabels, navRow, setNavRow, onClick}) => {
+const View = ({ swatches, setSwatches, labels, setLabels, navRow, setNavRow, onClick }) => {
 	return (
 		<div className="col-9 view">
 			<div className="col-12 page">
