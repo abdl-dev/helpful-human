@@ -1,3 +1,4 @@
+import storage from 'local-storage'
 import { useState } from 'react'
 import ReactPaginate from 'react-paginate'
 import Swatch from './Swatch'
@@ -7,12 +8,7 @@ const View = () => {
 		id: 'placeholder'
 	})
 
-	let colors = [];
-
-	for (let i = 0; i < 120; i++) {
-		let color = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
-		colors.push({ backgroundColor: color});
-	}
+	let colors = storage.get('colorList')
 
 	let pageSize = 12;
 	let numPages = Math.ceil(colors.length / pageSize);
