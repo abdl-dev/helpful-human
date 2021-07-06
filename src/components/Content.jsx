@@ -120,17 +120,19 @@ const Content = () => {
 			height: '258px'
 		}))
 
-		setLabels({
+		let newLabels = []
+		labels.forEach(item => newLabels.push({
+			text: item.text,
 			style: {
 				fontSize: '1.5rem',
 				lineHeight: '50px',
 				height: '50px',
 				width: '100%',
 				marginTop: '207px'
-			}
-		})
+		}}))
 
 		setSwatches(newSwatches)
+		setLabels(newLabels)
 		setNavRow(paginate)
 	}
 
