@@ -3,6 +3,7 @@ import { useState } from 'react'
 import ReactPaginate from 'react-paginate'
 import Sidebar from './Sidebar'
 import View  from './View'
+import Button  from './Button'
 
 const Content = () => {
 
@@ -26,7 +27,7 @@ const Content = () => {
 								 pageSize * (currPageNum + 1)));
 	}
 
-	const [navRow, setNavRow] = useState(
+	const paginate = (
 		<ReactPaginate
 			previousLabel={ 'Previous' }
 			nextLabel={ 'Next' }
@@ -40,6 +41,7 @@ const Content = () => {
 			pageRangeDisplayed={ numPages }
 		/>
 	)
+	const [navRow, setNavRow] = useState(paginate)
 
 	const onClickDetail = (e) => {
 		let newSwatches = []
@@ -67,7 +69,10 @@ const Content = () => {
 		})
 
 		setNavRow(
-			<input type="button" className="clear_btn" value="Clear" onClick={ onClickClear }/>
+			<Button key="btnClear"
+			  className="clear_btn"
+			  valueName="Clear"
+			    onClick={ onClickClear } />
 		)
 
 		// setLabels({
@@ -101,6 +106,7 @@ const Content = () => {
 		})
 
 		setSwatches(newSwatches)
+		setNavRow(paginate)
 		console.log(swatches)
 	}
 
