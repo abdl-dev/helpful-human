@@ -2,13 +2,6 @@
 	position: relative;
 }
 
-.logo {
-	height: 3.2rem;
-	padding: 0rem 1.15rem;
-	pointer-events: none;
-
-}
-
 .header {
 	position: relative;
 	height: 6.25rem;
@@ -17,6 +10,32 @@
 	justify-content: space-between;
 	box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.15);
 	z-index: 1;
+}
+
+.logo {
+	height: 3.2rem;
+	padding: 0rem 1.15rem;
+	pointer-events: none;
+
+}
+
+.search_bar {
+	color: #363c3c;
+	background-color: #FFFFFF;
+	width: 92%;
+	font-size: 1.5rem;
+	font-weight: 400;
+	padding: .85rem 1.25rem .55rem 1.35rem;
+	border: none;
+	border-radius: 8px;
+	text-align: left;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.search_bar::placeholder {
+	color: #878b8b;
 }
 
 .content {
@@ -48,22 +67,6 @@
 	cursor: pointer;
 }
 
-.clear_btn {
-	width: 260px;
-	color: #363c3c;
-	background-color: #FFFFFF;
-	font-size: 1.5rem;
-	font-weight: 700;
-	padding: 0.75rem 0rem 0.65rem 0rem;
-	margin: 1rem auto;
-	border: 1px solid #000000;
-	border-radius: 10px;
-	text-align: center;
-	text-decoration: none;
-	cursor: pointer;
-
-}
-
 .group_btn {
 	color: #363c3c;
 	background-color: transparent;
@@ -77,28 +80,18 @@
 	width: 150px;
 }
 
-.search_bar {
-	color: #363c3c;
-	background-color: #FFFFFF;
-	width: 92%;
-	font-size: 1.5rem;
-	font-weight: 400;
-	padding: .85rem 1.25rem .55rem 1.35rem;
-	border: none;
-	border-radius: 8px;
-	text-align: left;
-	text-decoration: none;
-	display: inline-block;
-	cursor: pointer;
-}
-
-.search_bar::placeholder {
-	color: #878b8b;
-}
 
 .view {
 	width: 77.8%;
 	padding: 5.02rem 2.5% 0rem 2.5%;
+}
+
+.page {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: flex-start;
 }
 
 .swatch {
@@ -124,12 +117,24 @@
 
 }
 
-.page {
+.navrow {
 	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
-	justify-content: space-between;
-	align-content: flex-start;
+}
+
+.clear_btn {
+	width: 260px;
+	color: #363c3c;
+	background-color: #FFFFFF;
+	font-size: 1.5rem;
+	font-weight: 700;
+	padding: 0.75rem 0rem 0.65rem 0rem;
+	margin: 1rem auto;
+	border: 1px solid #000000;
+	border-radius: 10px;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+
 }
 
 .paginate {
@@ -154,8 +159,4 @@
 
 .paginatePrevious, .paginateNext, .paginateDisabled {
 	display: none;
-}
-
-.navrow {
-	display: flex;
 }

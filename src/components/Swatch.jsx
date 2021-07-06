@@ -1,10 +1,7 @@
 import Label from './Label'
 
 const Swatch = ({ swatch, swatches, setSwatches, labels, setLabels, navRow, setNavRow, onClick}) => {
-
-	let label = labels.filter(item => item.text === swatch.backgroundColor)[0]
-
-		console.log(labels)
+	let label = labels.filter(item => item.text === swatch.backgroundColor)[0
 
 	return (
 		<div

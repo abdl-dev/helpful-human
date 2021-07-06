@@ -3,8 +3,7 @@ import './App.css';
 import Header  from './components/Header'
 import Content from './components/Content'
 
-function App() {
-
+function generateColors() {
 	if (storage.get('colorList') === null) {
 		let colors = [];
 
@@ -15,7 +14,10 @@ function App() {
 
 		storage.set('colorList', colors)
 	}
+}
 
+function App() {
+	generateColors()
 	return (
 		<div className="container-fluid h-100">
 			<Header/>
@@ -23,5 +25,7 @@ function App() {
 		</div>
 	);
 }
+
+
 
 export default App;
