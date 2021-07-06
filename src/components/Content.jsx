@@ -12,13 +12,18 @@ const Content = () => {
 
 	let colors = storage.get('colorList')
 
+	let currPageNum = 0;
 	let pageSize = 12;
 	let numPages = Math.ceil(colors.length / pageSize);
-	const [swatches, setSwatches] = useState(colors.slice(0, pageSize));
+	const [swatches, setSwatches] = useState(colors.slice(0,pageSize).map((item) => ({
+		backgroundColor: item.backgroundColor,
+		width: '220px'
+	})))
 
 	const selectPage = ({selected}) => {
-		setSwatches(colors.slice(pageSize * selected,
-								 pageSize * (selected + 1)));
+		currPageNum = selected
+		setSwatches(colors.slice(pageSize * currPageNum,
+								 pageSize * (currPageNum + 1)));
 	}
 
 	const [navRow, setNavRow] = useState(
@@ -76,7 +81,27 @@ const Content = () => {
 
 
 	const onClickClear = (e) => {
-		// to be implemented after bbq
+		let newSwatches = []
+		let page = colors.slice(pageSize * currPageNum,
+							pageSize * (currPageNum + 1))
+		newSwatches = page.map((item) => ({
+			backgroundColor: item.backgroundColor,
+			width: '220px',
+			height: '258px'
+		}))
+
+		setLabels({
+			style: {
+				fontSize: '1.5rem',
+				lineHeight: '50px',
+				height: '50px',
+				width: '100%',
+				marginTop: '207px'
+			}
+		})
+
+		setSwatches(newSwatches)
+		console.log(swatches)
 	}
 
 	const onClickRandom = (e) => {
@@ -90,7 +115,7 @@ const Content = () => {
 	return (
 		<div className="row content">
 			<Sidebar onClickRandom={ onClickRandom }
-					 onClickGroup={ onClickGroup }/>
+					  onClickGroup={ onClickGroup }/>
 			<View swatches={ swatches }
 			   setSwatches={ setSwatches }
 					labels={ labels }
