@@ -116,7 +116,7 @@ const Content = () => {
 			}
 		}))
 
-		setLabels(newLabels)
+		setLabels(newLabels.slice(0,6))
 
 		setNavRow(
 			<Button key="btnClear"
@@ -131,7 +131,7 @@ const Content = () => {
 	const onClickClear = (e) => {
 		let newSwatches = []
 		let page = colors.slice(pageSize * currPageNum,
-							pageSize * (currPageNum + 1))
+								pageSize * (currPageNum + 1))
 		newSwatches = page.map((item) => ({
 			backgroundColor: item.backgroundColor,
 			width: '220px',
@@ -139,8 +139,8 @@ const Content = () => {
 		}))
 
 		let newLabels = []
-		labels.forEach(item => newLabels.push({
-			text: item.text,
+		newLabels = page.map((item) => ({
+			text: item.backgroundColor,
 			style: {
 				fontSize: '1.5rem',
 				lineHeight: '50px',
