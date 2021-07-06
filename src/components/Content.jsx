@@ -89,7 +89,8 @@ const Content = () => {
 
 	return (
 		<div className="row content">
-			<Sidebar onClickRandom={ onClickRandom }/>
+			<Sidebar onClickRandom={ onClickRandom }
+					 onClickGroup={ onClickGroup }/>
 			<View swatches={ swatches }
 			   setSwatches={ setSwatches }
 					labels={ labels }
