@@ -20,8 +20,27 @@ const Content = () => {
 
 	const selectPage = ({selected}) => {
 		currPageNum = selected
-		setSwatches(colors.slice(pageSize * currPageNum,
-								 pageSize * (currPageNum + 1)));
+		let newColors = colors.slice(pageSize * currPageNum,
+									 pageSize * (currPageNum + 1));
+		let newSwatches = []
+		let newLabels = []
+		newColors.forEach((color) => newSwatches.push({
+			backgroundColor: color.backgroundColor,
+			width: '220px'
+		}))
+
+		newColors.forEach((color) => newLabels.push({
+			text: color.backgroundColor,
+			style: {
+				fontSize: '1.5rem',
+				lineHeight: '50px',
+				marginTop: '207px',
+				padding: '0rem 1.5rem'
+			}
+		}))
+
+		setSwatches(newSwatches)
+		setLabels(newLabels)
 	}
 
 	const [labels, setLabels] = useState(swatches.map((item) => ({
@@ -32,7 +51,6 @@ const Content = () => {
 			marginTop: '207px',
 			padding: '0rem 1.5rem'
 		}
-
 	})))
 
 	const paginate = (
@@ -137,7 +155,7 @@ const Content = () => {
 	}
 
 	const onClickRandom = (e) => {
-		let x = Math.floor(Math.random() * pageSize)
+		let x = Math.floor(Math.random() * swatches.length)
 		let randomSwatch = {
 			target: {
 				id: swatches[x].backgroundColor
