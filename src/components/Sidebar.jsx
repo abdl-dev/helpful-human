@@ -1,13 +1,19 @@
 import Button  from './Button'
 
-const Sidebar = () => {
+const Sidebar = ({onClickRandom, onClickGroup}) => {
 	let groupList = ['Red','Orange','Yellow','Green','Blue','Purple','Brown','Gray']
 
 	return (
 		<div className="col-3 sidebar">
-			<input type="button" className="random_btn" value="Random Color" />
+			<Button key="btnRandom"
+			  className="random_btn"
+			  valueName="Random Color"
+			    onClick={ onClickRandom }/>
 			{groupList.map((groupName) => (
-				<Button key={ groupName } className="group_btn" valueName={ groupName } />
+			<Button key={ 'group' + groupName }
+			  className="group_btn"
+			  valueName={ groupName }
+			    onClick={ onClickGroup}/>
 			))}
 		</div>
 	)

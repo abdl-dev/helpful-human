@@ -79,9 +79,17 @@ const Content = () => {
 		// to be implemented after bbq
 	}
 
+	const onClickRandom = (e) => {
+		// to be implemented
+	}
+
+	const onClickGroup = (e) => {
+		// to be implemented
+	}
+
 	return (
 		<div className="row content">
-			<Sidebar />
+			<Sidebar onClickRandom={ onClickRandom }/>
 			<View swatches={ swatches }
 			   setSwatches={ setSwatches }
 					labels={ labels }
