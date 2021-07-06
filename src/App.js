@@ -4,6 +4,7 @@ import Header  from './components/Header'
 import Content from './components/Content'
 
 function App() {
+
 	if (storage.get('colorList') === null) {
 		let colors = [];
 
