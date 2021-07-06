@@ -7,9 +7,6 @@ import Button  from './Button'
 
 const Content = () => {
 
-	const [labels, setLabels] = useState({
-		id: 'placeholder'
-	})
 
 	let colors = storage.get('colorList')
 
@@ -27,6 +24,17 @@ const Content = () => {
 								 pageSize * (currPageNum + 1)));
 	}
 
+	const [labels, setLabels] = useState(swatches.map((item) => ({
+		text: item.backgroundColor,
+		style: {
+			fontSize: '1.5rem',
+			lineHeight: '50px',
+			marginTop: '207px',
+			padding: '0rem 1.5rem'
+		}
+
+	})))
+
 	const paginate = (
 		<ReactPaginate
 			previousLabel={ 'Previous' }
@@ -41,9 +49,11 @@ const Content = () => {
 			pageRangeDisplayed={ numPages }
 		/>
 	)
+
 	const [navRow, setNavRow] = useState(paginate)
 
 	const onClickDetail = (e) => {
+
 		let newSwatches = []
 		newSwatches.push({
 			backgroundColor: e.target.id,
@@ -59,14 +69,32 @@ const Content = () => {
 
 		setSwatches(newSwatches.slice(0,6))
 
-		setLabels({
+		let newLabels = []
+		let detailLabel = [{
+			text: e.target.id,
+			style: {
+				fontSize: '4rem',
+				lineHeight: '150px',
+				height: '150px',
+				marginTop: '498px',
+				padding: '0rem 4.5rem'
+			}
+		}]
+		newLabels.push(detailLabel[0])
+
+		let restLabels = labels.filter(item => item.text !== e.target.id)
+		restLabels.forEach(label => newLabels.push({
+			text: label.text,
 			style: {
 				lineHeight: '65px',
 				height: '65px',
 				marginTop: '110px',
 				padding: '0rem 1.0rem'
 			}
-		})
+		}))
+		setLabels(newLabels)
+
+
 
 		setNavRow(
 			<Button key="btnClear"
@@ -76,11 +104,13 @@ const Content = () => {
 		)
 
 		// setLabels({
-		// 	fontSize: '4rem',
-		// 	lineHeight: '150px',
-		// 	height: '150px',
-		// 	marginTop: '498px',
-		// 	padding: '0rem 4.5rem'
+		// 	style: {
+		// 		fontSize: '4rem',
+		// 		lineHeight: '150px',
+		// 		height: '150px',
+		// 		marginTop: '498px',
+		// 		padding: '0rem 4.5rem'
+		// 	}
 		// })
 	}
 

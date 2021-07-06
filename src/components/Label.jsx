@@ -1,8 +1,9 @@
-const Label = ({ text, label }) => {
+const Label = ({ label }) => {
 	return (
 		<label
-		htmlFor={ text }
-		style={ label.style }>{ text }</label>
+		id={ 'label' + label.text }
+		htmlFor={ label.text }
+		style={ label.style }>{ label.text }</label>
 	)
 }
 
