@@ -1,8 +1,6 @@
 const Button = ({className, valueName}) => {
 	return (
-		<>
-			<input type="button" className={ className } value={ valueName } />
-		</>
+		<input type="button" className={ className } value={ valueName } />
 	)
 }
 

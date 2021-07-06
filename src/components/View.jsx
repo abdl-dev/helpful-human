@@ -1,4 +1,3 @@
-
 import Swatch from './Swatch'
 
 const View = ({ swatches, setSwatches, labels, setLabels, navRow, setNavRow, onClick}) => {
