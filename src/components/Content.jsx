@@ -1,12 +1,7 @@
 import Sidebar from './Sidebar'
 import View  from './View'
 
-const Content = ({swatches, setSwatches,
-                  labels,   setLabels,
-                  navRow,   setNavRow,
-                  onClickRandom,
-                  onClickGroup,
-                  onClickDetail}) => {
+const Content = ({swatches, labels, navRow, onClickRandom, onClickGroup, onClickDetail}) => {
 
     return (
         <div className='row content'>
@@ -16,11 +11,8 @@ const Content = ({swatches, setSwatches,
             />
             <View
                 swatches={swatches}
-                setSwatches={setSwatches}
                 labels={labels}
-                setLabels={setLabels}
                 navRow={navRow}
-                setNavRow={setNavRow}
                 onClick={onClickDetail}
             />
         </div>

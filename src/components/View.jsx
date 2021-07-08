@@ -1,9 +1,6 @@
 import Swatch from './Swatch'
 
-const View = ({swatches, setSwatches,
-               labels,   setLabels,
-               navRow,   setNavRow,
-               onClick }) => {
+const View = ({swatches, labels, navRow, onClick }) => {
     return (
         <div className='col-9 view'>
             <div className='col-12 page'>
@@ -11,12 +8,7 @@ const View = ({swatches, setSwatches,
                 <Swatch
                     key={'swatch' + swatch.backgroundColor + swatch.width}
                     swatch={swatch}
-                    swatches={swatches}
-                    setSwatches={setSwatches}
-                    labels={labels}
-                    setLabels={setLabels}
-                    navRow={navRow}
-                    setNavRow={setNavRow}
+                    label={labels.filter(item => item.text === swatch.backgroundColor)[0]}
                     onClick={onClick}
                 />
                 ))}

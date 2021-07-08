@@ -10,10 +10,12 @@ import Button  from './components/Button'
 function App() {
     let allColors = generateColors();
     const [colors, setColors] = useState(allColors);
+    const [searchQuery, setSearchQuery] = useState('');
 
     let currPageNum = 0;
     let pageSize = 12;
     let numPages = Math.ceil(colors.length / pageSize);
+
     const [swatches, setSwatches] = useState(colors.slice(0,pageSize).map((item) => ({
         backgroundColor: item.backgroundColor,
         width: '220px'
@@ -29,9 +31,7 @@ function App() {
         }
     })));
 
-    const [searchQuery, setSearchQuery] = useState('');
-
-    const onChangeSearch = (e) => {
+    function onChangeSearch(e) {
         setSearchQuery(e.target.value);
         if (searchQuery !== '') {
             setColors(allColors.filter(color => color.backgroundColor.includes(searchQuery)));
@@ -53,7 +53,7 @@ function App() {
         })));
     }
 
-    const selectPage = ({selected}) => {
+    function selectPage({selected}) {
         currPageNum = selected;
         let newColors = colors.slice(pageSize * currPageNum,
                                      pageSize * (currPageNum + 1));
@@ -95,7 +95,7 @@ function App() {
 
     const [navRow, setNavRow] = useState(pagination);
 
-    const onClickDetail = (e) => {
+    function onClickDetail(e) {
         let newSwatches = [];
         newSwatches.push({
             backgroundColor: e.target.id,
@@ -146,7 +146,7 @@ function App() {
     }
 
 
-    const onClickClear = (e) => {
+    function onClickClear(e) {
         let newSwatches = [];
         let page = colors.slice(pageSize * currPageNum,
                                 pageSize * (currPageNum + 1));
@@ -173,7 +173,7 @@ function App() {
         setNavRow(pagination);
     }
 
-    const onClickRandom = (e) => {
+    function onClickRandom(e) {
         let x = Math.floor(Math.random() * swatches.length);
         let randomSwatch = {
             target: {
@@ -183,7 +183,7 @@ function App() {
         onClickDetail(randomSwatch);
     }
 
-    const onClickGroup = (e) => {
+    function onClickGroup(e) {
         // TODO: to be implemented
     }
 
@@ -205,11 +205,8 @@ function App() {
             />
             <Content
                 swatches={swatches}
-                setSwatches={setSwatches}
                 labels={labels}
-                setLabels={setLabels}
                 navRow={navRow}
-                setNavRow={setNavRow}
                 onClickRandom={onClickRandom}
                 onClickGroup={onClickGroup}
                 onClickDetail={onClickDetail}
@@ -221,7 +218,6 @@ function App() {
 function generateColors() {
     if (storage.get('colorList') === null) {
         let colors = [];
-
         for (let i = 0; i < 120; i++) {
             let color = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
             colors.push({backgroundColor: color});
