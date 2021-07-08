@@ -20,6 +20,7 @@ function generateColors() {
     }
 }
 
+// TODO: bundle different funcitonality into separate respective functions/vars
 function App() {
     let allColors = generateColors();
     const [colors, setColors] = useState(allColors);
@@ -205,7 +206,7 @@ function App() {
     }
 
     const onClickGroup = (e) => {
-        // to be implemented
+        // TODO: to be implemented
     }
 
     return (
