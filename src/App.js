@@ -6,20 +6,6 @@ import Header  from './components/Header'
 import Content from './components/Content'
 import Button  from './components/Button'
 
-function generateColors() {
-    if (storage.get('colorList') === null) {
-        let colors = [];
-
-        for (let i = 0; i < 120; i++) {
-            let color = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
-            colors.push({backgroundColor: color});
-        }
-        storage.set('colorList', colors);
-    } else {
-        return storage.get('colorList');
-    }
-}
-
 // TODO: bundle different funcitonality into separate respective functions/vars
 function App() {
     let allColors = generateColors();
@@ -92,22 +78,22 @@ function App() {
         setLabels(newLabels);
     }
 
-    const paginate = (
+    const pagination = (
         <ReactPaginate
             previousLabel={'Previous'}
             nextLabel={'Next'}
             pageCount={numPages}
             onPageChange={selectPage}
-            containerClassName={'paginate'}
-            previousLinkClassName={'paginatePrevious'}
-            nextLinkClassName={'paginateNext'}
-            activeClassName={'paginateActive'}
-            disabledClassName={'paginateDisabled'}
+            containerClassName={'pagination'}
+            previousLinkClassName={'paginationPrevious'}
+            nextLinkClassName={'paginationNext'}
+            activeClassName={'paginationActive'}
+            disabledClassName={'paginationDisabled'}
             pageRangeDisplayed={numPages}
         />
     );
 
-    const [navRow, setNavRow] = useState(paginate);
+    const [navRow, setNavRow] = useState(pagination);
 
     const onClickDetail = (e) => {
         let newSwatches = [];
@@ -156,15 +142,7 @@ function App() {
 
         setLabels(newLabels.slice(0,6));
 
-        setNavRow(
-            <Button
-                key='btnClear'
-                className='clear_btn'
-                valueName='Clear'
-                onClick={onClickClear}
-            />
-
-        );
+        setNavRow(clearButton);
     }
 
 
@@ -192,7 +170,7 @@ function App() {
 
         setSwatches(newSwatches);
         setLabels(newLabels);
-        setNavRow(paginate);
+        setNavRow(pagination);
     }
 
     const onClickRandom = (e) => {
@@ -208,6 +186,15 @@ function App() {
     const onClickGroup = (e) => {
         // TODO: to be implemented
     }
+
+    const clearButton = (
+        <Button
+            key='btnClear'
+            className='clear_btn'
+            valueName='Clear'
+            onClick={onClickClear}
+        />
+    );
 
     return (
         <div className='container-fluid h-100'>
@@ -229,6 +216,20 @@ function App() {
             />
         </div>
     );
+}
+
+function generateColors() {
+    if (storage.get('colorList') === null) {
+        let colors = [];
+
+        for (let i = 0; i < 120; i++) {
+            let color = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+            colors.push({backgroundColor: color});
+        }
+        storage.set('colorList', colors);
+    } else {
+        return storage.get('colorList');
+    }
 }
 
 export default App;

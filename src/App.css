@@ -137,7 +137,7 @@
 
 }
 
-.paginate {
+.pagination {
     color: #363c3c;
     text-align: center;
     margin: 2.65rem auto 0rem auto;
@@ -146,17 +146,17 @@
     list-style: none;
 }
 
-.paginate > li {
+.pagination > li {
     margin:  0rem 0.45rem;
     padding: 0rem 0.45rem;
     display: inline;
 }
 
-.paginateActive { /* not sure why the reference photo doesn't use text-decoration: underline */
+.paginationActive { /* not sure why the reference photo doesn't use text-decoration: underline */
     font-weight: bold;
     border-bottom: 2px solid #363c3c;
 }
 
-.paginatePrevious, .paginateNext, .paginateDisabled {
+.paginationPrevious, .paginationNext, .paginationDisabled {
     display: none;
 }
