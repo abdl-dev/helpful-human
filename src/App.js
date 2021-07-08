@@ -211,22 +211,22 @@ function App() {
 
     return (
         <div className='container-fluid h-100'>
-        <Header
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-            onChange={onChangeSearch}
-        />
-        <Content
-            swatches={swatches}
-            setSwatches={setSwatches}
-            labels={labels}
-            setLabels={setLabels}
-            navRow={navRow}
-            setNavRow={setNavRow}
-            onClickRandom={onClickRandom}
-            onClickGroup={onClickGroup}
-            onClickDetail={onClickDetail}
-        />
+            <Header
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                onChange={onChangeSearch}
+            />
+            <Content
+                swatches={swatches}
+                setSwatches={setSwatches}
+                labels={labels}
+                setLabels={setLabels}
+                navRow={navRow}
+                setNavRow={setNavRow}
+                onClickRandom={onClickRandom}
+                onClickGroup={onClickGroup}
+                onClickDetail={onClickDetail}
+            />
         </div>
     );
 }

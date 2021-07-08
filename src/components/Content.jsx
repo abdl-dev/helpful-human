@@ -10,19 +10,19 @@ const Content = ({swatches, setSwatches,
 
     return (
         <div className='row content'>
-        <Sidebar
-            onClickRandom={onClickRandom}
-            onClickGroup={onClickGroup}
-        />
-        <View
-            swatches={swatches}
-            setSwatches={setSwatches}
-            labels={labels}
-            setLabels={setLabels}
-            navRow={navRow}
-            setNavRow={setNavRow}
-            onClick={onClickDetail}
-        />
+            <Sidebar
+                onClickRandom={onClickRandom}
+                onClickGroup={onClickGroup}
+            />
+            <View
+                swatches={swatches}
+                setSwatches={setSwatches}
+                labels={labels}
+                setLabels={setLabels}
+                navRow={navRow}
+                setNavRow={setNavRow}
+                onClick={onClickDetail}
+            />
         </div>
     );
 }
