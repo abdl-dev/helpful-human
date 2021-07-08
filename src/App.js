@@ -38,10 +38,12 @@ function App() {
         } else {
             setColors(allColors);
         }
+
         setSwatches(colors.slice(0,pageSize).map((item) => ({
             backgroundColor: item.backgroundColor,
             width: '220px'
         })));
+
         setLabels(colors.map((item) => ({
             text: item.backgroundColor,
             style: {
@@ -58,12 +60,12 @@ function App() {
         let newColors = colors.slice(pageSize * currPageNum,
                                      pageSize * (currPageNum + 1));
         let newSwatches = [];
-        let newLabels = [];
         newColors.forEach((color) => newSwatches.push({
             backgroundColor: color.backgroundColor,
             width: '220px'
         }));
 
+        let newLabels = [];
         newColors.forEach((color) => newLabels.push({
             text: color.backgroundColor,
             style: {
@@ -103,19 +105,16 @@ function App() {
             height: '650px',
             borderColor: 'black'
         });
-        let restSwatches = swatches.filter(item => item.backgroundColor !== e.target.id);
 
+        let restSwatches = swatches.filter(item => item.backgroundColor !== e.target.id);
         restSwatches.forEach(item => newSwatches.push({
             backgroundColor: item.backgroundColor,
             width: '176px',
             height: '176px'
         }));
 
-        setSwatches(newSwatches.slice(0,6));
-
         let newLabels = [];
-
-        let detailLabel = [{
+        let detailLabel = {
             text: e.target.id,
             style: {
                 fontSize: '4rem',
@@ -124,12 +123,10 @@ function App() {
                 marginTop: '498px',
                 padding: '0rem 4.5rem'
             }
-        }];
-
-        newLabels.push(detailLabel[0]);
+        };
+        newLabels.push(detailLabel);
 
         let restLabels = labels.filter(item => item.text !== e.target.id);
-
         restLabels.forEach(label => newLabels.push({
             text: label.text,
             style: {
@@ -140,11 +137,10 @@ function App() {
             }
         }));
 
+        setSwatches(newSwatches.slice(0,6));
         setLabels(newLabels.slice(0,6));
-
         setNavRow(clearButton);
     }
-
 
     function onClickClear(e) {
         let newSwatches = [];
